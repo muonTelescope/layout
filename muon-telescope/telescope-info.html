@@ -1,0 +1,55 @@
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+
+<dom-module id="telescope-info">
+    <template>
+        <style>
+            google-map {
+                height: 300px;
+                width: 300px;
+            }
+            
+            paper-card {
+                margin-top: 0;
+                position: inline-block;
+            }
+            
+            .map {
+                float: right;
+            }
+            
+            .header-info {
+                border: red solid 3px;
+            }
+            
+            .info {
+                display: inline-block;
+            }
+            
+            .header-info {
+                height: 300px;
+            }
+        </style>
+        <div class="header-info">
+            <div class="info">
+                <paper-card heading="Sample Telescope Name">
+                    <div class="card-content">
+                        Sample information about the individual detector
+                    </div>
+                </paper-card>
+            </div>
+            <div class="map">
+                <div class="card-map">
+                    <google-map latitude="33.754703" longitude="-84.388064" api-key="AIzaSyBiSGTXOhRShHhnnf_dPpyRueWsl0IrVkg" zoom="15">
+                        <google-map-marker latitude="33.754703" longitude="-84.388064" title="Alpha"></google-map-marker>
+                    </google-map>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'telescope-info'
+        });
+    </script>
+</dom-module>

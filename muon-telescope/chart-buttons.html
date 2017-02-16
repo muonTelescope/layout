@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="./chart.html">
+
+<dom-module id="chart-buttons">
+    <template>
+        <style>
+
+        </style>
+        <chart></chart>
+        <paper-dropdown-menu label="Chart Type">
+            <paper-listbox class="dropdown-content" selected="0">
+                <paper-item>Coincidence</paper-item>
+                <paper-item>Single Channel</paper-item>
+                <paper-item>Temperature</paper-item>
+                <paper-item>Humidity</paper-item>
+                <paper-item>Pressure</paper-item>
+                <paper-item>Voltage</paper-item>
+            </paper-listbox>
+        </paper-dropdown-menu>
+
+        <paper-button raised>Image</paper-button>
+        <paper-button raised>Raw Data (CSV format)</paper-button>
+    </template>
+    <script>
+        Polymer({
+            is: 'chart-buttons'
+        });
+    </script>
+</dom-module>
