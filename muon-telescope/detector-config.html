@@ -1,0 +1,21 @@
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="cosmic-chart.html">
+<dom-module id="detector-config">
+    <template>
+        <style>
+        </style>
+        <paper-card id="config-menu" heading="Detector Configuration">
+            <paper-input label="Voltage" type="number"></paper-input>
+            <paper-button raised>Start</paper-button>
+            <paper-button raised>Stop</paper-button>
+            <paper-button raised>Log</paper-button>
+        </paper-card>
+    </template>
+    <script>
+        Polymer({
+            is: 'detector-config'
+        });
+    </script>
+</dom-module>

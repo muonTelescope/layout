@@ -19,7 +19,7 @@
             }
             
             .info {
-                display: inline-block;
+                margin: 0 auto
             }
         </style>
         <style is="custom-style">
@@ -40,23 +40,37 @@
             }
         </style>
         <div class="container flex-horizontal-with-ratios">
-            <div class="header-info flex3child">
-                <paper-card heading="Sample Telescope Name">
-                    <div class="card-content">
-                        Sample information about the individual detector
-                    </div>
-                </paper-card>
-            </div>
-            <div class="map flexchild">
-                <paper-card heading="Detector Location">
-                    <div class="card-content">
-                        <google-map latitude="33.754703" longitude="-84.388064" api-key="AIzaSyBiSGTXOhRShHhnnf_dPpyRueWsl0IrVkg" zoom="15">
-                            <google-map-marker latitude="33.754703" longitude="-84.388064" title="Alpha"></google-map-marker>
-                        </google-map>
-                    </div>
-                </paper-card>
-            </div>
-        </div>
+            <table class="info">
+                <tr>
+                    <td rowspan="2">
+                        <div class="header-info flex3child">
+                            <paper-card heading="Sample Telescope Name">
+                                <div class="card-content">
+                                    <p>Sample information about the individual detector. Lorem ipsum dolor sit amet,
+                                        consectetur adipiscing elit. Suspendisse a ipsum at urna elementum sagittis vel
+                                        eget mi. Nulla eget ligula malesuada massa bibendumtristique ut ac est. Proin
+                                        eget porttitor nunc. Nulla suscipit ornare nulla.Mauris consectetur, diam at
+                                        molestie porta, tortor est placerat magna, ne crutrum arcu leo congue felis.
+                                        Maecenas vehicula congue nisi, vel convallis sem congue a. Ut eleifend arcu ut
+                                        ipsum tincidunt porttitor. Donec egestas diam ac dapibus lacinia.
+                                    </p>
+                                </div>
+                            </paper-card>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="map flexchild">
+                            <paper-card heading="Detector Location">
+                                <div class="card-content">
+                                    <google-map latitude="33.754703" longitude="-84.388064" api-key="AIzaSyBiSGTXOhRShHhnnf_dPpyRueWsl0IrVkg" zoom="15">
+                                        <google-map-marker latitude="33.754703" longitude="-84.388064" title="Alpha"></google-map-marker>
+                                    </google-map>
+                                </div>
+                            </paper-card>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
     </template>
     <script>
