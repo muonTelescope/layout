@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+
+<dom-module id="telescope-map">
+    <template>
+        <style>
+            google-map {
+                height: 30vh;
+                width: 40vh;
+            }
+            
+            .map {
+                float: right;
+            }
+            
+            .info {
+                margin: 0 auto
+            }
+        </style>
+        <div class="map">
+            <h2>Detector Location</h2>
+            <google-map latitude="33.754703" longitude="-84.388064" api-key="AIzaSyBiSGTXOhRShHhnnf_dPpyRueWsl0IrVkg" zoom="15">
+                <google-map-marker latitude="33.754703" longitude="-84.388064" title="Alpha"></google-map-marker>
+            </google-map>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'telescope-map'
+        });
+    </script>
+</dom-module>
