@@ -1,76 +1,14 @@
-<link rel="import" href="../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../bower_components/google-map/google-map.html">
-<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
 <dom-module id="telescope-info">
     <template>
-        <style>
-            google-map {
-                height: 30vh;
-                width: 40vh;
-            }
-            
-            paper-card {
-                margin-top: 0;
-                position: inline-block;
-            }
-            
-            .map {
-                float: right;
-            }
-            
-            .info {
-                margin: 0 auto
-            }
-        </style>
-        <style is="custom-style">
-            .flex-horizontal-with-ratios {
-                @apply(--layout-horizontal);
-            }
-            
-            .flexchild {
-                @apply(--layout-flex);
-            }
-            
-            .flex2child {
-                @apply(--layout-flex-2);
-            }
-            
-            .flex3child {
-                @apply(--layout-flex-3);
-            }
-        </style>
-        <div class="container flex-horizontal-with-ratios">
-            <table class="info">
-                <tr>
-                    <td rowspan="2">
-                        <div class="header-info flex3child">
-                            <paper-card heading="Sample Telescope Name">
-                                <div class="card-content">
-                                    <p>Sample information about the individual detector. Lorem ipsum dolor sit amet,
-                                        consectetur adipiscing elit. Suspendisse a ipsum at urna elementum sagittis vel
-                                        eget mi. Nulla eget ligula malesuada massa bibendumtristique ut ac est. Proin
-                                        eget porttitor nunc. Nulla suscipit ornare nulla.Mauris consectetur, diam at
-                                        molestie porta, tortor est placerat magna, ne crutrum arcu leo congue felis.
-                                        Maecenas vehicula congue nisi, vel convallis sem congue a. Ut eleifend arcu ut
-                                        ipsum tincidunt porttitor. Donec egestas diam ac dapibus lacinia.
-                                    </p>
-                                </div>
-                            </paper-card>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="map flexchild">
-                            <paper-card heading="Detector Location">
-                                <div class="card-content">
-                                    <google-map latitude="33.754703" longitude="-84.388064" api-key="AIzaSyBiSGTXOhRShHhnnf_dPpyRueWsl0IrVkg" zoom="15">
-                                        <google-map-marker latitude="33.754703" longitude="-84.388064" title="Alpha"></google-map-marker>
-                                    </google-map>
-                                </div>
-                            </paper-card>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+        <div>
+        <p>Sample information about the individual detector. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            a ipsum at urna elementum sagittis vel eget mi. Nulla eget ligula malesuada massa bibendumtristique ut ac est.
+            Proin eget porttitor nunc. Nulla suscipit ornare nulla.Mauris consectetur, diam at molestie porta, tortor est
+            placerat magna, ne crutrum arcu leo congue felis. Maecenas vehicula congue nisi, vel convallis sem congue a.
+            Ut eleifend arcu ut ipsum tincidunt porttitor. Donec egestas diam ac dapibus lacinia.
+        </p>
         </div>
     </template>
     <script>

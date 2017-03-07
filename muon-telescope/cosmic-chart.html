@@ -57,7 +57,7 @@ Start or stop logging procedure
                     <paper-tab>MAX</paper-tab>
                 </paper-tabs>
             </div>
-            <google-chart id="cosmicChart" type="scatter" options=[[options]] data={{chartData}}></google-chart>
+            <google-chart id="cosmicChart" type="scatter" options=[[options]] data='[["Time", "Counts", "Average"], ["0", 500, 500], ["1", 250, 400], ["2", 600, 450]]'></google-chart>
         </paper-material>
 
 
@@ -193,6 +193,10 @@ Start or stop logging procedure
                 // options.hAxis.viewWindow.max = new Date();
                 // options.hAxis.viewWindow.min = oneDay().$gte;
                 options.pointSize = 3;
+                options.series = {};
+                options.series[1] = {};
+                options.series[1].lineWidth = 3;
+                options.series[1].pointsVisible = 0;
                 return options;
             },
             handleResponse: function (data) {
