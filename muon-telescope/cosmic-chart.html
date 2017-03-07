@@ -34,6 +34,7 @@ Start or stop logging procedure
 
             google-chart {
                 width: auto;
+                margin: 10px;
             }
 
             paper-tabs {
@@ -41,26 +42,14 @@ Start or stop logging procedure
             }
         </style>
 
-        <paper-material elevation="1">
-
+        <div>
             <div class="header">
                 <h1>Lloyd Wright</h1>
                 <p>First three paddle detector, 2mmx2mm 50uM pixel size TSV MPPC Attached to 145mmx145mm plastic scintilator pannel
                     with embedded fibers.</p>
-                <paper-tabs selected={{_duration}}>
-                    <paper-tab>1D</paper-tab>
-                    <paper-tab>7D</paper-tab>
-                    <paper-tab>1M</paper-tab>
-                    <paper-tab>3M</paper-tab>
-                    <paper-tab>1Y</paper-tab>
-                    <paper-tab>5Y</paper-tab>
-                    <paper-tab>MAX</paper-tab>
-                </paper-tabs>
             </div>
             <google-chart id="cosmicChart" type="scatter" options=[[options]] data='[["Time", "Counts", "Average"], ["0", 500, 500], ["1", 250, 400], ["2", 600, 450]]'></google-chart>
-        </paper-material>
-
-
+        </div>
 
         <!--<paper-input label = "Interval" value= {{time}} auto-validate pattern="[0-9.0-9]*" error-message="numbers only!" suffix>
             <div suffix>Seconds</div>

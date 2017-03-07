@@ -2,25 +2,59 @@
 <link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="cosmic-chart.html">
 <dom-module id="chart-buttons">
     <template>
         <style>
 
+            paper-material {
+                background: white;
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+
+            paper-checkbox {
+                margin-top: 25px;
+            }
+
+            #buttons {
+                margin: 5px;
+            }
+
         </style>
-        <cosmic-chart></cosmic-chart>
-        <paper-dropdown-menu label="Chart Type">
-            <paper-listbox class="dropdown-content" selected="0">
-                <paper-item>Coincidence</paper-item>
-                <paper-item>Single Channel</paper-item>
-                <paper-item>Temperature</paper-item>
-                <paper-item>Humidity</paper-item>
-                <paper-item>Pressure</paper-item>
-                <paper-item>Voltage</paper-item>
-            </paper-listbox>
-        </paper-dropdown-menu>
-        <paper-button raised>Image</paper-button>
-        <paper-button raised>Raw Data (CSV format)</paper-button>
+
+        <paper-material>
+            <table>
+                <tr>
+                    <td>
+                        <div id="buttons">
+                            <paper-checkbox>Coincidence</paper-checkbox>
+                            <br>
+                            <paper-checkbox>Temperature</paper-checkbox>
+                            <br>
+                            <paper-checkbox>Pressure</paper-checkbox>
+                            <br>
+                            <paper-checkbox>Humidity</paper-checkbox>
+                            <br>
+                            <paper-checkbox>Voltage</paper-checkbox>
+                            <br>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <cosmic-chart></cosmic-chart>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <paper-button raised>Image</paper-button>
+                        <paper-button raised>Raw Data (CSV format)</paper-button>
+                    </td>
+                </tr>
+            </table>
+        </paper-material>
     </template>
     <script>
         Polymer({
