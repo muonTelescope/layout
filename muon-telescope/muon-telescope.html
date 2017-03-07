@@ -12,11 +12,12 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
 <link rel="import" href="./telescope-info.html">
 <link rel="import" href="./chart-buttons.html">
 <link rel="import" href="./detector-config.html">
 <link rel="import" href="./telescope-map.html">
-
 <dom-module id="muon-telescope">
     <template>
         <style>
@@ -74,6 +75,9 @@
                 @apply(--layout-flex);
             }
         </style>
+        <firebase-app auth-domain="muontelescope.firebaseapp.com" database-url="https://muontelescope.firebaseio.com/" api-key="AIzaSyCzZyOimb9h1kKuy14dF1SD3HH0_8avhDk">
+            <firebase-auth id="auth" user="{{user}}" status-known="{{statusKnown}}" provider="google" on-error="handleError">
+        </firebase-app>
         <style is="custom-style" include="iron-flex iron-flex"></style>
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
@@ -93,7 +97,8 @@
                     <app-toolbar>
                         <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
                         <div main-title>Muon Telescope</div>
-                        <paper-button raised>Sign in</paper-button>
+                        <paper-button raised on-tap="login" hidden$="[[user]]">Sign in</paper-button>
+                        <paper-button raised on-tap="logout" hidden$="[[!user]]">Sign out</paper-button>
                     </app-toolbar>
                 </app-header>
                 <div class="layout horizontal wrap">
@@ -118,11 +123,12 @@
                     <chart-buttons></chart-buttons>
                 </div>
                 <div>
-                    <detector-config></detector-config>
+                    <detector-config hidden$="[[!user]]"></detector-config>
                 </div>
                 </div>
             </app-header-layout>
         </app-drawer-layout>
+        </firebase-auth>
     </template>
     <script>
         Polymer({
@@ -133,6 +139,18 @@
                     reflectToAttribute: true,
                     observer: '_pageChanged',
                 },
+                user: {
+                    type: Object
+                },
+                statusKnown: {
+                    type: Object
+                }
+            },
+            login: function () {
+                return this.$.auth.signInWithPopup();
+            },
+            logout: function () {
+                return this.$.auth.signOut();
             },
             observers: [
                 '_routePageChanged(routeData.page)',
@@ -150,7 +168,7 @@
             },
             _showPage404: function () {
                 this.page = 'view404';
-            },
+            }
         });
     </script>
 </dom-module>
