@@ -10,10 +10,13 @@
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="./telescope-info.html">
 <link rel="import" href="./chart-buttons.html">
 <link rel="import" href="./detector-config.html">
 <link rel="import" href="./telescope-map.html">
+
 <dom-module id="muon-telescope">
     <template>
         <style>
@@ -53,52 +56,25 @@
                 background-color: red;
                 padding: 5px;
             }
-        </style>
-        <style include="app-grid-style">
-             :host {
-                display: block;
-                --app-grid-columns: 3;
-                --app-grid-gutter: 10px;
-                --app-grid-expandible-item-columns: 2;
-                --app-grid-item-height: 20vw;
+            
+            .layout {
+                padding: 10px;
             }
             
-            ul {
-                padding: 20px;
-                list-style: none;
-            }
-            
-            h1 {
-                font-family: 'Roboto', 'Noto', sans-serif;
-                text-align: center;
-                font-size: 18px;
-                line-height: 30px;
-                font-weight: 400;
-                margin: 10px 20px;
-            }
-            
-            .item {
-                list-style: none;
-                background-color: white;
-            }
-            
-            @media (min-width: 800px) {
-                .item:first-child {
-                    @apply(--app-grid-expandible-item);
-                }
-            }
-            
-            @media (max-width: 799px) {
-                 :host {
-                    --app-grid-columns: 2;
-                    --app-grid-gutter: 5px;
-                    --app-grid-expandible-item-columns: 2;
-                }
-                .item:first-child {
-                    @apply(--app-grid-expandible-item);
-                }
+            paper-card {
+                padding: 10px;
             }
         </style>
+        <style is="custom-style">
+            .flex-horizontal {
+                @apply(--layout-horizontal);
+            }
+            
+            .flexchild {
+                @apply(--layout-flex);
+            }
+        </style>
+        <style is="custom-style" include="iron-flex iron-flex"></style>
         <app-location route="{{route}}"></app-location>
         <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
         <app-drawer-layout fullbleed>
@@ -120,20 +96,31 @@
                         <paper-button raised>Sign in</paper-button>
                     </app-toolbar>
                 </app-header>
-                <ul class="app-grid">
-                    <li class="item">
-                        <telescope-info></telescope-info>
-                    </li>
-                    <li class="item">
-                        <telescope-map></telescope-map>
-                    </li>
-                    <li class="item">
-                        <chart-buttons></chart-buttons>
-                    </li>
-                    <li class="item">
-                        <detector-config></detector-config>
-                    </li>
-                </ul>
+                <div class="layout horizontal wrap">
+                    <div class="container flex-horizontal">
+                        <paper-card heading="Telescope Info">
+                            <div class="card content">
+                                <div class="flexchild">
+                                    <telescope-info></telescope-info>
+                                </div>
+                            </div>
+                        </paper-card>
+                        <paper-card heading="Detector Location">
+                            <div class="card content">
+                                <div>
+                                    <telescope-map></telescope-map>
+                                </div>
+                            </div>
+                        </paper-card>
+                    </div>
+                </div>
+                <div>
+                    <chart-buttons></chart-buttons>
+                </div>
+                <div>
+                    <detector-config></detector-config>
+                </div>
+                </div>
             </app-header-layout>
         </app-drawer-layout>
     </template>
