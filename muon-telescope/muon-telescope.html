@@ -14,10 +14,13 @@
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-app.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+
 <link rel="import" href="./telescope-info.html">
 <link rel="import" href="./chart-buttons.html">
 <link rel="import" href="./detector-config.html">
 <link rel="import" href="./telescope-map.html">
+<link rel="import" href="./detector-list.html">
+
 <dom-module id="muon-telescope">
     <template>
         <style>
@@ -34,23 +37,6 @@
             
             app-header paper-icon-button {
                 --paper-icon-button-ink-color: white;
-            }
-            
-            .drawer-list {
-                margin: 0 20px;
-            }
-            
-            .drawer-list a {
-                display: block;
-                padding: 0 16px;
-                text-decoration: none;
-                color: var(--app-secondary-color);
-                line-height: 40px;
-            }
-            
-            .drawer-list a.iron-selected {
-                color: black;
-                font-weight: bold;
             }
             
             paper-button {
@@ -85,11 +71,7 @@
             <!-- Drawer content -->
             <app-drawer id="drawer">
                 <app-toolbar>Detectors</app-toolbar>
-                <iron-selector selected="view1" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a name="view1">Alpha</a>
-                    <a name="view2">Bravo</a>
-                    <a name="view3">Charlie</a>
-                </iron-selector>
+	        <detector-list table="detector"></detector-list>
             </app-drawer>
             <!-- Main content -->
             <app-header-layout has-scrolling-region>
