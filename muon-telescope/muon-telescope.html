@@ -24,30 +24,30 @@
 <dom-module id="muon-telescope">
     <template>
         <style>
-             :host {
+            :host {
                 --app-primary-color: #4285f4;
                 --app-secondary-color: black;
                 display: block;
             }
-            
+
             app-header {
                 color: #fff;
                 background-color: var(--app-primary-color);
             }
-            
+
             app-header paper-icon-button {
                 --paper-icon-button-ink-color: white;
             }
-            
+
             paper-button {
                 background-color: red;
                 padding: 5px;
             }
-            
+
             .layout {
                 padding: 16px;
             }
-            
+
             paper-card {
                 padding: 10px;
             }
@@ -56,60 +56,44 @@
             .flex-horizontal {
                 @apply(--layout-horizontal);
             }
-            
+
             .flexchild {
                 @apply(--layout-flex);
             }
         </style>
-        <firebase-app auth-domain="muontelescope.firebaseapp.com" database-url="https://muontelescope.firebaseio.com/" api-key="AIzaSyCzZyOimb9h1kKuy14dF1SD3HH0_8avhDk">
-            <firebase-auth id="auth" user="{{user}}" status-known="{{statusKnown}}" provider="google" on-error="handleError">
+        <firebase-app auth-domain="muontelescope.firebaseapp.com" database-url="https://muontelescope.firebaseio.com/"
+                      api-key="AIzaSyCzZyOimb9h1kKuy14dF1SD3HH0_8avhDk">
+            <firebase-auth id="auth" user="{{user}}" status-known="{{statusKnown}}" provider="google"
+                           on-error="handleError">
         </firebase-app>
         <style is="custom-style" include="iron-flex iron-flex"></style>
-        <app-location route="{{route}}"></app-location>
-        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
-        <app-drawer-layout fullbleed>
-            <!-- Drawer content -->
-            <app-drawer id="drawer">
-                <app-toolbar>Detectors</app-toolbar>
-	        <detector-list table="detector"></detector-list>
-            </app-drawer>
-            <!-- Main content -->
-            <app-header-layout has-scrolling-region>
-                <app-header reveals condenses effects="waterfall">
-                    <app-toolbar>
-                        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-                        <div main-title>Muon Telescope</div>
-                        <paper-button raised on-tap="login" hidden$="[[user]]">Sign in</paper-button>
-                        <paper-button raised on-tap="logout" hidden$="[[!user]]">Sign out</paper-button>
-                    </app-toolbar>
-                </app-header>
-                <div class="layout horizontal wrap">
-                    <div class="container flex-horizontal">
-                        <paper-card heading="Telescope Info" style="margin-right: 16px">
-                            <div class="card content">
-                                <div class="flexchild">
-                                    <telescope-info></telescope-info>
-                                </div>
+        <!-- Main content -->
+        <app-header-layout has-scrolling-region>
+            <div class="layout horizontal wrap">
+                <div class="container flex-horizontal">
+                    <paper-card heading="Telescope Info" style="margin-right: 16px">
+                        <div class="card content">
+                            <div class="flexchild">
+                                <telescope-info></telescope-info>
                             </div>
-                        </paper-card>
-                        <paper-card heading="Detector Location">
-                            <div class="card content">
-                                <div>
-                                    <telescope-map></telescope-map>
-                                </div>
+                        </div>
+                    </paper-card>
+                    <paper-card heading="Detector Location">
+                        <div class="card content">
+                            <div>
+                                <telescope-map></telescope-map>
                             </div>
-                        </paper-card>
-                    </div>
+                        </div>
+                    </paper-card>
                 </div>
-                <div>
-                    <chart-buttons></chart-buttons>
-                </div>
-                <div>
-                    <detector-config hidden$="[[!user]]"></detector-config>
-                </div>
-                </div>
-            </app-header-layout>
-        </app-drawer-layout>
+            </div>
+            <div>
+                <chart-buttons></chart-buttons>
+            </div>
+            <div>
+                <detector-config hidden$="[[!user]]"></detector-config>
+            </div>
+        </app-header-layout>
         </firebase-auth>
     </template>
     <script>
@@ -121,18 +105,9 @@
                     reflectToAttribute: true,
                     observer: '_pageChanged',
                 },
-                user: {
-                    type: Object
-                },
                 statusKnown: {
                     type: Object
                 }
-            },
-            login: function () {
-                return this.$.auth.signInWithPopup();
-            },
-            logout: function () {
-                return this.$.auth.signOut();
             },
             observers: [
                 '_routePageChanged(routeData.page)',

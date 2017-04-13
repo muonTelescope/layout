@@ -1,0 +1,45 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<link rel="import" href="../../muon-telescope/chart-buttons.html">
+
+<dom-module id="detector-detail">
+    <template>
+        <style include="iron-flex iron-flex-alignment">
+             :host {
+                display: block;
+            }
+
+            paper-card {
+                margin: 10px;
+                padding: 10px;
+            }
+        </style>
+
+        <paper-card heading="{{selected.name}}" alt="{{selected.name}}">
+            <div class="card-content">
+                {{selected.description}}
+            </div>
+            <div class="card-actions">
+                Tags: {{selected.tags}}
+            </div>
+        </paper-card>
+
+        <chart-buttons selected={{selected}}></chart-buttons>
+
+
+    </template>
+    <script>
+        Polymer({
+            is: 'detector-detail',
+            properties: {
+                selected: {
+                    type: Object
+                },
+            },
+        });
+    </script>
+</dom-module>
