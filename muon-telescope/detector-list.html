@@ -23,62 +23,62 @@
             }
 
         </style>
-	
-	<iron-selector selected=[[lastResponse.0.alias]] attr-for-selected="name" role="navigation">
-		<template is="dom-repeat" items="[[lastResponse]]">
-			<a name=[[item.alias]]>[[item.name]]</a>
-		</template>
-	</iron-selector>
 
-	<iron-ajax
-	auto
-	id="detectorNames"
-	url=[[url]]
-	params=[[params]]
-	method="GET"
-	handle-as="json"
-	last-response={{lastResponse}}
-	on-response=response
-	debounce-duration="300"
-	></iron-ajax>
+        <iron-selector selected=[[lastResponse.0.alias]] attr-for-selected="name" role="navigation">
+            <template is="dom-repeat" items="[[lastResponse]]">
+                <a name=[[item.alias]]>[[item.name]]</a>
+            </template>
+        </iron-selector>
+
+        <iron-ajax
+                auto
+                id="detectorNames"
+                url=[[url]]
+                params=[[params]]
+                method="GET"
+                handle-as="json"
+                last-response={{lastResponse}}
+                on-response=response
+                debounce-duration="300"
+        ></iron-ajax>
 
     </template>
     <script>
-	Polymer({
-		is: 'detector-list',
-		properties: {
-			url: {
-				type: String,
-				computed: "computeURL(table)",
-			},
-			params: {
-				type: String,
-				computed: "computeParams(table)",
-			},
-			table: {
-				type: String,
-				value: "detector",
-			},
-		},
-		computeURL: function(table){
-			return "/api/db/"+this.table;
-		},
-		computeParams: function(){
-			var params = {};
-			params.type = "json";
-			params.select = {};
-			params.select.attributes = [];
-			params.select.attributes.push("alias");
-			params.select.attributes.push("name");
-			params.select = JSON.stringify(params.select);
-			return params;
-		},
-		response : function(data){
-			console.log("Hi");
-			console.log(data.detail.response);
-			console.log(this.url);
-			console.log(this.params);
-		}
+        Polymer({
+            is: 'detector-list',
+            properties: {
+                url: {
+                    type: String,
+                    computed: "computeURL(table)",
+                },
+                params: {
+                    type: String,
+                    computed: "computeParams(table)",
+                },
+                table: {
+                    type: String,
+                    value: "detector",
+                },
+            },
+            computeURL: function (table) {
+                return "/api/db/" + this.table;
+            },
+            computeParams: function () {
+                var params = {};
+                params.type = "json";
+                params.select = {};
+                params.select.attributes = [];
+                params.select.attributes.push("alias");
+                params.select.attributes.push("name");
+                params.select = JSON.stringify(params.select);
+                return params;
+            },
+            response: function (data) {
+                console.log("Hi");
+                console.log(data.detail.response);
+                console.log(this.url);
+                console.log(this.params);
+            }
         });
     </script>
 </dom-module>
